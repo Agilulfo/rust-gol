@@ -1,5 +1,6 @@
 // Game Of Life (gol)
 mod gol {
+    use std::mem;
     // Struct representing a Plane
     pub struct Plane {
         width: i32,
@@ -70,9 +71,8 @@ mod gol {
             // do stuff here and prepare next
 
             // swap current with next
-            let tmp = self.current;
-            self.current = self.next;
-            self.next = tmp;
+
+            mem::swap(&mut self.current, &mut self.next);
         }
 
         pub fn print(&self) {
@@ -110,7 +110,7 @@ fn main() {
         // clear screen
         plane.print();
 
-        // plane.evolve()
+        plane.evolve();
         count += 1;
         if count == 10 {
             break;
