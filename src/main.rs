@@ -89,9 +89,30 @@ mod gol {
         }
 
         pub fn evolve(&mut self) {
-            // do stuff here and prepare next
+            for x in 0..self.width {
+                for y in 0..self.length {
+                    let alive_neighbors = self.count_alive_neighbors(x, y);
 
-            // swap current with next
+                    let next_state = match self.current[y as usize][x as usize] {
+                        CellState::Alive => {
+                            if alive_neighbors == 2 || alive_neighbors == 3 {
+                                CellState::Alive
+                            } else {
+                                CellState::Dead
+                            }
+                        }
+                        CellState::Dead => {
+                            if alive_neighbors == 3 {
+                                CellState::Alive
+                            } else {
+                                CellState::Dead
+                            }
+                        }
+                    };
+
+                    self.next[y as usize][x as usize] = next_state;
+                }
+            }
 
             mem::swap(&mut self.current, &mut self.next);
         }
