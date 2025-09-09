@@ -96,14 +96,14 @@ fn main() {
     let mut plane = gol::Plane::new(width, length);
 
     // try to set cell out of index
-    plane.set_cell(-1, 12, gol::CellState::Alive);
+    // plane.set_cell(-1, 12, gol::CellState::Alive);
 
     // draw a glider
-    // plane.set_cell(4, 0, gol::CellState::Alive);
-    // plane.set_cell(5, 0, gol::CellState::Alive);
-    // plane.set_cell(6, 0, gol::CellState::Alive);
-    // plane.set_cell(6, 1, gol::CellState::Alive);
-    // plane.set_cell(5, 2, gol::CellState::Alive);
+    plane.set_cell(4, 0, gol::CellState::Alive);
+    plane.set_cell(5, 0, gol::CellState::Alive);
+    plane.set_cell(6, 0, gol::CellState::Alive);
+    plane.set_cell(6, 1, gol::CellState::Alive);
+    plane.set_cell(5, 2, gol::CellState::Alive);
 
     let mut count = 0;
     loop {
