@@ -65,7 +65,28 @@ mod gol {
             (x as usize, y as usize)
         }
 
-        // fn count_alive_neighbors(x, y) -> u8
+        fn count_alive_neighbors(&self, x: i32, y: i32) -> u8 {
+            let neighbors = [
+                (x - 1, y - 1),
+                (x, y - 1),
+                (x + 1, y - 1),
+                (x - 1, y),
+                (x + 1, y),
+                (x - 1, y + 1),
+                (x, y + 1),
+                (x + 1, y + 1),
+            ];
+
+            let mut count = 0;
+            for (x, y) in neighbors {
+                let (x, y) = self.trim_coords(x, y);
+
+                if let CellState::Alive = self.current[y][x] {
+                    count += 1
+                };
+            }
+            return count;
+        }
 
         pub fn evolve(&mut self) {
             // do stuff here and prepare next
