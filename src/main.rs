@@ -135,8 +135,8 @@ mod gol {
 }
 
 fn main() {
-    let width = 10;
-    let length = 10;
+    let width = 50;
+    let length = 30;
 
     let mut plane = gol::Plane::new(width, length);
 
