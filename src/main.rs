@@ -1,3 +1,6 @@
+use std::thread;
+use std::time::Duration;
+
 // Game Of Life (gol)
 mod gol {
     use std::mem;
@@ -147,16 +150,15 @@ fn main() {
     plane.set_cell(6, 1, gol::CellState::Alive);
     plane.set_cell(5, 2, gol::CellState::Alive);
 
-    let mut count = 0;
     loop {
         // clear screen
+        print!("\x1B[2J\x1B[1;1H");
+
         plane.print();
 
         plane.evolve();
-        count += 1;
-        if count == 10 {
-            break;
-        }
+
         // wait
+        thread::sleep(Duration::from_millis(100));
     }
 }
