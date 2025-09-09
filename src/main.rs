@@ -66,7 +66,14 @@ mod gol {
 
         // fn count_alive_neighbors(x, y) -> u8
 
-        // fn evolve(&self)
+        pub fn evolve(&mut self) {
+            // do stuff here and prepare next
+
+            // swap current with next
+            let tmp = self.current;
+            self.current = self.next;
+            self.next = tmp;
+        }
 
         pub fn print(&self) {
             for row in &self.current {
