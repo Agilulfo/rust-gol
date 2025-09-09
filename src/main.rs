@@ -38,6 +38,10 @@ mod gol {
             }
         }
 
+        pub fn set_cell(&mut self, x: usize, y: usize, state: CellState) {
+            self.current[y][x] = state;
+        }
+
         // fn trim_coords(x, y) -> (i32, i32)
 
         // fn count_alive_neighbors(x, y) -> u8
@@ -62,9 +66,14 @@ fn main() {
     let width = 10;
     let length = 10;
 
-    let plane = gol::Plane::new(width, length);
+    let mut plane = gol::Plane::new(width, length);
 
-    // plane.set_cell(x, y, alive or dead);
+    // draw a glider
+    plane.set_cell(4, 0, gol::CellState::Alive);
+    plane.set_cell(5, 0, gol::CellState::Alive);
+    plane.set_cell(6, 0, gol::CellState::Alive);
+    plane.set_cell(6, 1, gol::CellState::Alive);
+    plane.set_cell(5, 2, gol::CellState::Alive);
 
     let mut count = 0;
     loop {
