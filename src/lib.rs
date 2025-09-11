@@ -1,5 +1,7 @@
 use std::mem;
 // Struct representing a Plane
+pub mod utils;
+
 pub struct Plane {
     width: i32,
     length: i32,
