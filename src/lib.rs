@@ -1,5 +1,7 @@
+use rand;
+use rand::Rng;
 use std::mem;
-// Struct representing a Plane
+
 pub mod utils;
 
 pub struct Plane {
@@ -36,6 +38,30 @@ impl Plane {
             length,
             current: new_matrix(width, length),
             next: new_matrix(width, length),
+        }
+    }
+
+    pub fn new_random(width: i32, length: i32) -> Self {
+        let mut plane = Self {
+            width,
+            length,
+            current: new_matrix(width, length),
+            next: new_matrix(width, length),
+        };
+        plane.randomize();
+        return plane;
+    }
+
+    fn randomize(&mut self) {
+        let mut rng = rand::rng();
+        for x in 0..self.width {
+            for y in 0..self.length {
+                self.current[y as usize][x as usize] = if rng.random() {
+                    CellState::Alive
+                } else {
+                    CellState::Dead
+                };
+            }
         }
     }
 
